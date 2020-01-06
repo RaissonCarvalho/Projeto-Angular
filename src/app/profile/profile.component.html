@@ -1,0 +1,14 @@
+<div class="col-lg-12">
+    <div class="container">
+        <h2>My Profiles</h2>
+        <ul class="profiles">
+            <li *ngFor="let profile of profiles">
+                <a routerLink="/detail/{{profile.id}}">
+                    <span class="badge">{{profile.id}}</span> {{profile.first_name}}
+                </a>
+                <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+            </li>
+        </ul>
+
+    </div>
+</div>
