@@ -18,12 +18,27 @@ export class ProfileService {
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
-  getProfiles (): Observable<Profile[]> {
+  getProfiles(): Observable<Profile[]> {
     return this.http.get<Profile[]>(this.profilesUrl)
       .pipe(
         tap(_ => this.log('fetched profiles')),
         catchError(this.handleError<Profile[]>('getProfiles', []))
       );
+  }
+
+  getProfile(id: number): Observable<Profile> {
+    const url = `${this.profilesUrl}/${id}`;
+    return this.http.get<Profile>(url).pipe(
+      tap(_ => this.log(`fetched profile id=${id}`)),
+      catchError(this.handleError<Profile>(`getHero id=${id}`))
+    );
+  }
+
+  updateProfile(profile: Profile): Observable<Profile>{
+    return this.http.put(`${this.profilesUrl}/${profile.id}`, profile, this.httpOptions).pipe(
+      tap(_ => this.log(`updated profile id=${profile.id}`)),
+      catchError(this.handleError<any>('updateProfile'))
+    )
   }
 
   private log(message: string) {
