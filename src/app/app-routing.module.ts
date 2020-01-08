@@ -5,13 +5,16 @@ import { ProfileComponent } from "./profile/profile.component";
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 import { AdComponent } from './ad/ad.component';
 import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'ads', pathMatch: 'full' },
-  { path: 'detail/:id', component: ProfileDetailComponent },
+  { path: 'profile-detail/:id', component: ProfileDetailComponent },
   { path: 'profiles', component: ProfileComponent },
-  { path: 'ads' , component: AdComponent},
+  { path: 'ads' , component: AdComponent, canActivate: [AuthGuard]},
   { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

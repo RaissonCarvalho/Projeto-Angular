@@ -18,6 +18,10 @@ export class ProfileService {
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
+  signup(first_name: string, last_name: string, email: string, phone_number: string, city: string){
+    return this.http.post(this.profilesUrl, {first_name, last_name, email, phone_number, city})
+  }
+
   getProfiles(): Observable<Profile[]> {
     return this.http.get<Profile[]>(this.profilesUrl)
       .pipe(

@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AppRoutingModule } from './app-routing.module'
 import { HttpClientModule, HTTP_INTERCEPTORS }    from '@angular/common/http';
-import { AuthService } from './auth.service';
+import { AuthService, AuthInterceptor, AuthGuard } from './auth.service';
+
+
 import { MessagesComponent } from './messages/messages.component';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 import { AdComponent } from './ad/ad.component';
 import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { AdService } from './ad.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,7 @@ import { SignupComponent } from './signup/signup.component';
     ProfileDetailComponent,
     AdComponent,
     SignupComponent,
+    LoginComponent,
 
   ],
   imports: [
@@ -28,7 +33,16 @@ import { SignupComponent } from './signup/signup.component';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AdService,
+    AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
