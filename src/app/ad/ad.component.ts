@@ -25,6 +25,18 @@ export class AdComponent implements OnInit {
     this.adService.getAds().subscribe(ads => this.ads = ads)
   }
 
+  addAd(title: string, description: string, value: number): void{
+    this.adService.addAd(title, description, value).subscribe(
+      (ad: Ad) => this.ads.push(ad),
+      error => this.error = error
+    );
+  }
+
+  delete(ad: Ad): void {
+    this.ads = this.ads.filter(a => a !== ad);
+    this.adService.deleteAd(ad).subscribe();
+  }
+
   logout(){
     localStorage.removeItem('token');
     localStorage.removeItem('expires_at');

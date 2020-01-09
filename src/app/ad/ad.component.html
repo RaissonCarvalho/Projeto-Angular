@@ -9,9 +9,17 @@
                 <a routerLink="/detail/{{ad.id}}">
                     <span class="badge">{{ad.value}}</span> {{ad.title}}
                 </a>
-                <button class="delete" title="delete profile" (click)="delete(profile)">x</button>
+                <button class="delete" title="deleteAd" (click)="deleteAd(ad)">x</button>
             </li>
         </ul>
+        <div>
+            <form class="form-group">
+                <input class="form-control" #title type="text" placeholder="Título" /><br>
+                <input class="form-control" #description type="text" placeholder="Descrição" /><br>
+                <input class="form-control" #value type="number" placeholder="Valor" /><br>
 
+                <button class="btn btn-dark form-control" type="button" (click)="addAd(title.value, description.value, value.value)">Inserir Anúncio</button>
+            </form>
+        </div>
     </div>
 </div>

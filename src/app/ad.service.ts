@@ -26,6 +26,20 @@ export class AdService {
       );
   }
 
+  addAd(title: string, description: string, value: number): Observable<Ad> {
+    return this.http.post<Ad>(this.adsUrl, {title, description, value});
+  }
+
+  deleteAd (ad: Ad | number): Observable<Ad> {
+    const id = typeof ad === 'number' ? ad : ad.id;
+    const url = this.adsUrl.concat(`/${id}`);
+
+    return this.http.delete<Ad>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted ad id=${id}`)),
+      catchError(this.handleError<Ad>('deleteAd'))
+    );
+  }
+
   private log(message: string) {
     this.messageService.add(`AdService: ${message}`);
   }

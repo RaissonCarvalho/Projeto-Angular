@@ -11,7 +11,7 @@
     background-color: #EEE;
     margin: .5em;
     padding: .3em 0;
-    height: 1.6em;
+    height: 2.6em;
     border-radius: 4px;
 }
 
@@ -43,8 +43,8 @@
     position: relative;
     left: -1px;
     top: -4px;
-    height: 1.8em;
-    min-width: 16px;
+    height: 3.0em;
+    min-width: 15px;
     text-align: right;
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
@@ -67,7 +67,7 @@ button:hover {
 button.delete {
     position: relative;
     left: 194px;
-    top: -32px;
+    top: -42px;
     background-color: gray !important;
     color: white;
 }
