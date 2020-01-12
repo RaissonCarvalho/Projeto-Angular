@@ -15,6 +15,7 @@ import { AdComponent } from './ad/ad.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AdService } from './ad.service';
+import { AdDetailComponent } from './ad-detail/ad-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AdService } from './ad.service';
     AdComponent,
     SignupComponent,
     LoginComponent,
+    AdDetailComponent,
 
   ],
   imports: [

@@ -26,17 +26,27 @@ export class AdService {
       );
   }
 
+  getAd(id: number): Observable<Ad> {
+    const url = `${this.adsUrl}/${id}`;
+    return this.http.get<Ad>(url).pipe(
+      tap(_ => this.log(`fetched ad id=${id}`)),
+      catchError(this.handleError<Ad>(`getAd id=${id}`))
+    );
+  }
+
   addAd(title: string, description: string, value: number): Observable<Ad> {
     return this.http.post<Ad>(this.adsUrl, {title, description, value});
   }
 
-  deleteAd (ad: Ad | number): Observable<Ad> {
-    const id = typeof ad === 'number' ? ad : ad.id;
-    const url = this.adsUrl.concat(`/${id}`);
+  deleteAd(id: number) {
+    return this.http.delete(this.adsUrl.concat(`/${id}`));
+  }
 
-    return this.http.delete<Ad>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted ad id=${id}`)),
-      catchError(this.handleError<Ad>('deleteAd'))
+  updateAd(ad: Ad): Observable<any>{
+    const url = `${this.adsUrl}/${ad.id}`
+    return this.http.put(url, ad, this.httpOptions).pipe(
+      tap(_ => this.log(`updated ad id=${ad.id}`)),
+      catchError(this.handleError<any>('updateAd'))
     );
   }
 

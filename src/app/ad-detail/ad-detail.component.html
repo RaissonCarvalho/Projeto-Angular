@@ -1,0 +1,26 @@
+<div class="col-lg-12">
+    <div class="container">
+        <div *ngIf="ad">
+            <h2>{{ad.title}}</h2>
+            <div></div>
+            <div>
+                <h3 style="margin-bottom: 10x; margin-top: 10px;">{{ad.description}}</h3>
+            </div>
+
+            <div>
+                <input class="form-control" [(ngModel)]="ad.description" placeholder="Descrição" />
+                <input class="form-control" [(ngModel)]="ad.value" placeholder="Valor" />
+            </div>
+            <button class="save form-control" (click)="save()">Salvar</button><br>
+            <button class="form-control" (click)="goBack()">Voltar</button><br>
+
+            <div>
+                <h2>Entre em Contato:</h2>
+                <div>
+                    <p>Anunciante: {{ad.owner.first_name}} {{ad.owner.last_name}}</p>
+                    <p>Tel: {{ad.owner.phone_number}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

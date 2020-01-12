@@ -32,15 +32,16 @@ export class AdComponent implements OnInit {
     );
   }
 
-  delete(ad: Ad): void {
-    this.ads = this.ads.filter(a => a !== ad);
-    this.adService.deleteAd(ad).subscribe();
+  deleteAd(id: number) {
+    this.adService.deleteAd(id).subscribe(
+      (success: any) => this.ads.splice(
+        this.ads.findIndex(ad => ad.id === id)
+      )
+    );
   }
 
   logout(){
-    localStorage.removeItem('token');
-    localStorage.removeItem('expires_at');
+    this.authService.logout()
     this.router.navigate(['login'])
   }
-
 }

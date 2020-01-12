@@ -10,7 +10,7 @@ import { MessageService } from './message.service';
 })
 export class ProfileService {
 
-  private profilesUrl = 'api/profiles/'
+  private profilesUrl = 'api/profiles/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,7 +19,7 @@ export class ProfileService {
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   signup(first_name: string, last_name: string, email: string, phone_number: string, city: string){
-    return this.http.post(this.profilesUrl, {first_name, last_name, email, phone_number, city})
+    return this.http.post(this.profilesUrl, {first_name, last_name, email, phone_number, city});
   }
 
   getProfiles(): Observable<Profile[]> {
@@ -42,7 +42,7 @@ export class ProfileService {
     return this.http.put(`${this.profilesUrl}/${profile.id}`, profile, this.httpOptions).pipe(
       tap(_ => this.log(`updated profile id=${profile.id}`)),
       catchError(this.handleError<any>('updateProfile'))
-    )
+    );
   }
 
   private log(message: string) {

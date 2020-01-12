@@ -6,10 +6,11 @@
         <h2>Anuncios</h2>
         <ul class="ads">
             <li *ngFor="let ad of ads">
-                <a routerLink="/detail/{{ad.id}}">
-                    <span class="badge">{{ad.value}}</span> {{ad.title}}
+                <span class="badge">{{ad.value}}</span> {{ad.title}}
+                <a><button class="delete" title="deleteAd" (click)="deleteAd(ad.id)">x</button></a>
+                <a routerLink="/ad-detail/{{ad.id}}">
+                    <button class="edit">Editar</button>
                 </a>
-                <button class="delete" title="deleteAd" (click)="deleteAd(ad)">x</button>
             </li>
         </ul>
         <div>
@@ -18,7 +19,7 @@
                 <input class="form-control" #description type="text" placeholder="Descrição" /><br>
                 <input class="form-control" #value type="number" placeholder="Valor" /><br>
 
-                <button class="btn btn-dark form-control" type="button" (click)="addAd(title.value, description.value, value.value)">Inserir Anúncio</button>
+                <button class="add form-control" (click)="addAd(title.value, description.value, value.value)">Inserir Anúncio</button>
             </form>
         </div>
     </div>
