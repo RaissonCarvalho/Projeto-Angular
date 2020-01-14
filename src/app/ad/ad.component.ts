@@ -25,18 +25,12 @@ export class AdComponent implements OnInit {
     this.adService.getAds().subscribe(ads => this.ads = ads)
   }
 
-  addAd(title: string, description: string, value: number): void{
-    this.adService.addAd(title, description, value).subscribe(
-      (ad: Ad) => this.ads.push(ad),
-      error => this.error = error
-    );
-  }
-
   deleteAd(id: number) {
     this.adService.deleteAd(id).subscribe(
       (success: any) => this.ads.splice(
         this.ads.findIndex(ad => ad.id === id)
-      )
+      ),
+      error => this.error = error
     );
   }
 

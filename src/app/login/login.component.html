@@ -1,13 +1,15 @@
-<div class="container" style="text-align: center;">
+<div class="container" style="text-align: center; margin-top: 30px;">
     <h1>
         Login
     </h1>
 
-    <input class="form-control" #username type='text' placeholder='Usuário'><br>
-    <input class="form-control" #password type='password' placeholder='Senha'><br>
-    <button class="form-control" (click)="login(username.value, password.value) ">Entrar</button>
-    <p>{{ error?.message }}</p>
-    <p *ngIf="error ">{{ error?.error | json }}</p>
+    <div style="margin-top: 20px;">
+        <input class="form-control" #username type='text' placeholder='Usuário'><br>
+        <input class="form-control" #password type='password' placeholder='Senha'><br>
+        <button class="form-control" (click)="login(username.value, password.value) ">Entrar</button>
+        <p>{{ error?.message }}</p>
+        <p *ngIf="error ">{{ error?.error | json }}</p>
 
-    <a routerLink="/signup">Não tem cadastro? Cadastre-se</a>
+        <a routerLink="/signup">Não tem cadastro? Cadastre-se</a>
+    </div>
 </div>

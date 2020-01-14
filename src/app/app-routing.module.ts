@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.service';
 import { AdDetailComponent } from './ad-detail/ad-detail.component';
+import { CreateAdComponent } from './create-ad/create-ad.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'ads', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'ad-detail/:id', component: AdDetailComponent, canActivate: [AuthGuard]},
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'create-ad', component: CreateAdComponent },
 ];
 
 @NgModule({

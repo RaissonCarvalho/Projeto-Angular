@@ -4,11 +4,11 @@
             <h2>{{ad.title}}</h2>
             <div></div>
             <div>
-                <h3 style="margin-bottom: 10x; margin-top: 10px;">{{ad.description}}</h3>
+                <h3 style="margin-top: 40px;">{{ad.description}}</h3>
             </div>
 
             <div>
-                <input class="form-control" [(ngModel)]="ad.description" placeholder="Descrição" />
+                <input style="margin-top: 80px;" class="form-control" [(ngModel)]="ad.description" placeholder="Descrição" />
                 <input class="form-control" [(ngModel)]="ad.value" placeholder="Valor" />
             </div>
             <button class="save form-control" (click)="save()">Salvar</button><br>
@@ -22,6 +22,8 @@
                     <p>Cidade: {{ad.owner.city}}</p>
                 </div>
             </div>
+            <p>{{ error?.message }}</p>
+            <p *ngIf="error ">{{ error?.error | json }}</p>
         </div>
     </div>
 </div>
