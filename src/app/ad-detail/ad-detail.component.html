@@ -5,6 +5,7 @@
             <div></div>
             <div>
                 <h3 style="margin-top: 40px;">{{ad.description}}</h3>
+                <h4>Preço: {{ad.value}}</h4>
             </div>
 
             <div>
@@ -22,8 +23,10 @@
                     <p>Cidade: {{ad.owner.city}}</p>
                 </div>
             </div>
-            <p>{{ error?.message }}</p>
-            <p *ngIf="error ">{{ error?.error | json }}</p>
+            <div>
+                <p>{{ error?.message }}</p>
+                <p *ngIf="error ">{{ error?.error | json }}</p>
+            </div>
         </div>
     </div>
 </div>
