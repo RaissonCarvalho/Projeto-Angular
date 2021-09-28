@@ -1,7 +1,5 @@
 Dupla: Henrique Garcia e Raisson Carvalho
 
-# Video YouTube
-https://www.youtube.com/watch?v=1nECybgfe7Y
 
 # OlxCover
 
